@@ -29,8 +29,8 @@ public class AddressController {
         return response;
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public //@ResponseBody
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public @ResponseBody
     RestResponse addAddress(@RequestBody AddressData addressData){
         RestResponse response = new RestResponse();
 
@@ -56,6 +56,5 @@ public class AddressController {
 
         return response;
     }
-
 
 }

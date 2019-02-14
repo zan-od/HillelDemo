@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 
 @Data
-public class RestResponse {
+public class RestResponse extends AbstractRestResponse{
 
     @NotNull
     private int status;
