@@ -10,6 +10,9 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
@@ -259,4 +262,32 @@ public class AddressServiceImplTest {
         assertEquals(address, savedAddress);
     }
 
+    @Test
+    public void testListAddresses_ShouldReturnEmptyList() {
+
+        when(mockedAddressRepository.findAll()).thenReturn(new ArrayList<>());
+
+        List<Address> list = addressService.listAddresses();
+
+        assertNotNull(list);
+        assertEquals(list.size(), 0);
+    }
+
+    @Test
+    public void testListAddresses() {
+
+        Address address = new Address();
+        address.setId(1);
+
+        List<Address> list = new ArrayList<>();
+        list.add(address);
+
+        when(mockedAddressRepository.findAll()).thenReturn(list);
+
+        List<Address> savedAddresses = addressService.listAddresses();
+
+        assertNotNull(savedAddresses);
+        assertEquals(savedAddresses.size(), 1);
+        assertEquals(savedAddresses.get(0).getId(), list.get(0).getId());
+    }
 }

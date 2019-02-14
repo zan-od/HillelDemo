@@ -8,6 +8,8 @@ import org.hillel.demo.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AddressServiceImpl implements AddressService{
 
@@ -88,6 +90,11 @@ public class AddressServiceImpl implements AddressService{
         }
 
         return address;
+    }
+
+    @Override
+    public List<Address> listAddresses() {
+        return addressRepository.findAll();
     }
 
 }

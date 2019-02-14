@@ -30,4 +30,8 @@ public class Address {
     @NotNull
     private Street street;
 
+    public String toFormattedString(){
+        return String.format("%s, %s, %s", country.getName(), city.getName(), street.getName());
+    }
+
 }
